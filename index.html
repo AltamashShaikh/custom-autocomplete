@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Autocomplete Plugin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css" type='text/css'>
+        <link rel="stylesheet" href="css/jquery-ui.min.css" type='text/css'>
+        <link rel="stylesheet" href="css/custom_autocomplete.css" type="text/css">
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom_autocomplete.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Search</h1>
+            <form class="form-horizontal" method="get" action="index.html" id="form_search">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <br>
+                            <div class="col-lg-4">
+                                <input name="value" class="form-control" id="input_box" placeholder="Search" value="" autocomplete="off" type="text" style="width: 105%">
+                                <ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script>
+
+            function add_hidden_options(dis, form) {
+                console.log(form);
+                form.submit();
+//        if ($(dis).data("type") == "name_email") {
+//            if ($(dis).data("value") != "" || $(dis).data("value") != null) {
+//                $('#name_email').val($(dis).data("value"));
+//                $('#form_search').submit();
+//            }
+//        }
+            }
+
+            function call_auto_complete_ajax(value) {
+                return '<li class="list-group-item list-group-ae-item value_in cursor_hand autocomplete_li">ajax li</li>';
+            }
+
+            $('#input_box').autocomplete_v1({"length": 2, 'ajax': true, "in": {"customer_id": "Customer ID", "customer_fullname": "Customer Name", "ad_unit_id": "Ad Tag ID", "ad_unit_name": "Ad Tag Name", "accounting_entity_id": "AE ID", "accounting_entity_name": "AE Name", "SOURCE": "Source"}});
+        </script>
+    </body>
+</html>

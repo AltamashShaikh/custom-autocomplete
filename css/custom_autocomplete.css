@@ -1,0 +1,24 @@
+.autocomplete_ul .autocomplete_li:hover{
+    cursor: pointer; 
+    cursor: hand;
+    color: #ffffff;
+    background-color: #f77462;
+    border-color: #f77462;
+    background-image: linear-gradient(to bottom, #f77462 0%, #f5543e 100%);
+    background-repeat: repeat-x;
+}
+
+.autocomplete_ul{
+    position: absolute;
+    z-index:10;
+    width:97%
+}
+
+.autocomplete_ul .autocomplete_li{
+    z-index: 1;
+}
+
+.autocomplete_ul .autocomplete_li:hover{
+    cursor: pointer; 
+    cursor: hand;
+}
