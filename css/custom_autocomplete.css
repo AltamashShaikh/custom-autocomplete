@@ -11,7 +11,8 @@
 .autocomplete_ul{
     position: absolute;
     z-index:10;
-    width:97%
+    width:97%;
+    overflow: hidden;
 }
 
 .autocomplete_ul .autocomplete_li{

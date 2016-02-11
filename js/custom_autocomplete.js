@@ -3,12 +3,24 @@
     $.fn.autocomplete_v1 = function(opt) {
 //        $(this).parent().append('<ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul"></ul>');
 //$(this).append('<ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul"></ul>');
-        $('<ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul"></ul>').insertAfter($(this));
+        $('<ul class="list-group list-group-ae autocomplete_ul pre-scrollable no_display" id="autocomple_ul"></ul>').insertAfter($(this));
         var form = $(this).closest("form");
         $(this).on('input', function() {
             if ($(this).val().length > ((opt['length'] != undefined && opt['length'] != null) ? opt['length'] : 0)) {
                 if (opt['ajax'] != undefined && opt['ajax'] != null && opt['ajax'] == true) {
-                    var options = call_auto_complete_ajax($(this).val());
+
+                    $.ajax({
+                        'url': opt['ajax_url'],
+                        'data': {'search': $(this).val()},
+                        'type': 'POST',
+                        'success': function(response) {
+                            var options = call_auto_complete_ajax(response);
+                            $('#autocomple_ul').html(options).show();
+                            $(this).focus();
+                            return;
+                        }
+                    });
+
                 } else {
                     if (opt['in'] != undefined && opt['in'] != null && !$.isEmptyObject(opt['in'])) {
                         var options = "";
@@ -25,10 +37,10 @@
 //                        options += "<li class='list-group-item list-group-ae-item value_in cursor_hand autocomplete_li'>" + $(this).val() + " in:AE ID</li>";
 //                        options += "<li class='list-group-item list-group-ae-item value_in cursor_hand autocomplete_li'>" + $(this).val() + " in:AE Name</li>";
                 }
-                
-                $(this).next().html(options).show();
+
+                $('#autocomple_ul').html(options).show();
             } else {
-                $(this).next().html("").show();
+                $('#autocomple_ul').html("").show();
             }
         });
         var liSelected;
@@ -74,7 +86,7 @@
                     if ($name == "" || $name == null) {
                         $(".list-group-ae").fadeOut();
 //                        $('#form_search').submit();
-add_hidden_options($('.list-group-ae').find(".active"), form);
+                        add_hidden_options($('.list-group-ae').find(".active"), form);
                     } else {
                         $(".list-group-ae").fadeOut();
                         add_hidden_options($('.list-group-ae').find(".active"), form);
@@ -84,8 +96,8 @@ add_hidden_options($('.list-group-ae').find(".active"), form);
                 }
             } else if ($(this).is(":focus")) {
                 if (e.which === 13 && $(this).val().length > 0) {
-//                    $('#form_search').submit();
-    add_hidden_options($('.list-group-ae').find(".active"), form);
+                    $(form).submit();
+//                    add_hidden_options($('.list-group-ae').find(".active"), form);
                 }
             }
 
