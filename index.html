@@ -20,8 +20,6 @@
                             <br>
                             <div class="col-lg-4">
                                 <input name="value" class="form-control" id="input_box" placeholder="Search" value="" autocomplete="off" type="text" style="width: 105%">
-                                <ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul">
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -45,7 +43,7 @@
                 return '<li class="list-group-item list-group-ae-item value_in cursor_hand autocomplete_li">ajax li</li>';
             }
 
-            $('#input_box').autocomplete_v1({"length": 2, 'ajax': true, "in": {"customer_id": "Customer ID", "customer_fullname": "Customer Name", "ad_unit_id": "Ad Tag ID", "ad_unit_name": "Ad Tag Name", "accounting_entity_id": "AE ID", "accounting_entity_name": "AE Name", "SOURCE": "Source"}});
+            $('#input_box').autocomplete_v1({"length": 2, 'ajax': false, "in": {"customer_id": "Customer ID", "customer_fullname": "Customer Name", "ad_unit_id": "Ad Tag ID", "ad_unit_name": "Ad Tag Name", "accounting_entity_id": "AE ID", "accounting_entity_name": "AE Name", "SOURCE": "Source"}});
         </script>
     </body>
 </html>

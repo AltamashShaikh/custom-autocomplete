@@ -1,6 +1,9 @@
 (function($) {
 
     $.fn.autocomplete_v1 = function(opt) {
+//        $(this).parent().append('<ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul"></ul>');
+//$(this).append('<ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul"></ul>');
+        $('<ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul"></ul>').insertAfter($(this));
         var form = $(this).closest("form");
         $(this).on('input', function() {
             if ($(this).val().length > ((opt['length'] != undefined && opt['length'] != null) ? opt['length'] : 0)) {
