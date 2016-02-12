@@ -118,7 +118,7 @@
                 $(".list-group-ae").fadeOut();
             }
         });
-        $('#form_search').bind("keypress", function(e) {
+        $(form).bind("keypress", function(e) {
             if (e.keyCode == 13) {
                 e.preventDefault();
                 return false;
