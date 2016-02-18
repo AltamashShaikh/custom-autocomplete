@@ -8,9 +8,9 @@
         $(this).on('input', function() {
             if ($(this).val().length > ((opt['length'] != undefined && opt['length'] != null) ? opt['length'] : 0)) {
                 if (opt['ajax'] != undefined && opt['ajax'] != null && opt['ajax'] == true) {
-                    var ajax_data = {'search': $(this).val()};
+                    var ajax_data={'search': $(this).val()};
                     if (opt['ajax_data'] != undefined && opt['ajax_data'] != null && opt['ajax_data'] == true) {
-                        ajax_data = autocomplete_get_ajax_data($(this), $(this).val());
+                        ajax_data=autocomplete_get_ajax_data($(this),$(this).val());
                     }
                     $.ajax({
                         'url': opt['ajax_url'],
