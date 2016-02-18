@@ -5,12 +5,29 @@
 //$(this).append('<ul class="list-group list-group-ae autocomplete_ul no_display" id="autocomple_ul"></ul>');
         $('<ul class="list-group list-group-ae autocomplete_ul pre-scrollable no_display" id="autocomple_ul"></ul>').insertAfter($(this));
         var form = $(this).closest("form");
+
+        var in_addtional_data = "";
+        if (opt['in_additional_data'] != undefined && opt['in_additional_data'] != null) {
+            for (var in_additional_data_key in opt['in_additional_data']) {
+                in_additional_data_key += ' data-' + in_additional_data_key + '="' + opt['in_additional_data'][in_additional_data_key] + '" ';
+            }
+        }
+        var input_dis = $(this);
+
+        if (opt['focus'] != undefined && opt['focus'] != null && opt['focus'] == true) {
+            $(this).on('focus', function() {
+                var options = get_focus_options($(this));
+                $('#autocomple_ul').html(options).show();
+            });
+        }
+
+
         $(this).on('input', function() {
             if ($(this).val().length > ((opt['length'] != undefined && opt['length'] != null) ? opt['length'] : 0)) {
                 if (opt['ajax'] != undefined && opt['ajax'] != null && opt['ajax'] == true) {
-                    var ajax_data={'search': $(this).val()};
+                    var ajax_data = {'search': $(this).val()};
                     if (opt['ajax_data'] != undefined && opt['ajax_data'] != null && opt['ajax_data'] == true) {
-                        ajax_data=autocomplete_get_ajax_data($(this),$(this).val());
+                        ajax_data = autocomplete_get_ajax_data($(this), $(this).val());
                     }
                     $.ajax({
                         'url': opt['ajax_url'],
@@ -28,7 +45,7 @@
                     if (opt['in'] != undefined && opt['in'] != null && !$.isEmptyObject(opt['in'])) {
                         var options = "";
                         for (var key in opt['in']) {
-                            options += "<li class='list-group-item list-group-ae-item value_in cursor_hand autocomplete_li' data-key='" + key + "' data-value='" + opt["in"][key] + "'>" + $(this).val() + " in:" + opt["in"][key] + "</li>";
+                            options += "<li class='list-group-item list-group-ae-item value_in cursor_hand autocomplete_li' data-key='" + key + "' data-value='" + opt["in"][key] + "' " + in_additional_data_key + ">" + $(this).val() + " in:" + opt["in"][key] + "</li>";
                         }
                     } else {
                         var options = '<li class="list-group-item list-group-ae-item value_in cursor_hand autocomplete_li">No Data found</li>';
@@ -41,6 +58,9 @@
 //                        options += "<li class='list-group-item list-group-ae-item value_in cursor_hand autocomplete_li'>" + $(this).val() + " in:AE Name</li>";
                 }
 
+                $('#autocomple_ul').html(options).show();
+            } else if (opt['focus'] != undefined && opt['focus'] != null && opt['focus'] == true) {
+                var options = get_focus_options($(this));
                 $('#autocomple_ul').html(options).show();
             } else {
                 $('#autocomple_ul').html("").show();
@@ -117,7 +137,7 @@
         });
         $(document).on("click", function(e) {
             var $clicked = $(e.target);
-            if (!$clicked.hasClass("list-group-ae-item") && $clicked.attr("id") != "input_box") {
+            if (!$clicked.hasClass("list-group-ae-item") && $clicked.attr("id") != input_dis.attr('id')) {
                 $(".list-group-ae").fadeOut();
             }
         });
