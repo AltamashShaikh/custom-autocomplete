@@ -24,6 +24,7 @@
 
         $(this).on('input', function() {
             if ($(this).val().length > ((opt['length'] != undefined && opt['length'] != null) ? opt['length'] : 0)) {
+                $('#autocomple_ul').html("").hide();
                 if (opt['ajax'] != undefined && opt['ajax'] != null && opt['ajax'] == true) {
                     var ajax_data = {'search': $(this).val()};
                     if (opt['ajax_data'] != undefined && opt['ajax_data'] != null && opt['ajax_data'] == true) {
