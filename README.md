@@ -50,6 +50,15 @@ To make the li's after the ajax request is completed create the following method
 		function call_auto_complete_ajax(value) {
 						return '<li class="list-group-item list-group-ae-item value_in cursor_hand autocomplete_li" data-value="'+value+'">'+value+'</li>';
 					}
+					
+And finally add the following method to capture the selected element from the list which is created
+
+	function add_hidden_options(dis,form){
+	/*
+	do whaterver you wanna do dis variable will hold the info about the clicked or selected element and form will hold the info about the form in which the input is placed
+	*/
+
+	}
             
 
 
