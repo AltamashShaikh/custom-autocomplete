@@ -7,7 +7,7 @@ The plugin can be used to autocomplete for 2 scenarios
 
 To initialize it 
 
-$('#input_box').autocomplete_v1({"length": 2, 'ajax': true, 'ajax_url': 'test.php'});
+	$('#input_box').autocomplete_v1({"length": 2, 'ajax': true, 'ajax_url': 'test.php'});
 
 2.To give a search hint,eg search for keyword bob in subject,body and etc
 
