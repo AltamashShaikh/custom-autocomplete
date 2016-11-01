@@ -29,21 +29,17 @@
         <script>
 
             function add_hidden_options(dis, form) {
+                console.log(dis);
+                alert($(dis).data("value"));
                 console.log(form);
-                form.submit();
-//        if ($(dis).data("type") == "name_email") {
-//            if ($(dis).data("value") != "" || $(dis).data("value") != null) {
-//                $('#name_email').val($(dis).data("value"));
-//                $('#form_search').submit();
-//            }
-//        }
             }
 
             function call_auto_complete_ajax(value) {
-                return '<li class="list-group-item list-group-ae-item value_in cursor_hand autocomplete_li">ajax li</li>';
+                return '<li class="list-group-item list-group-ae-item value_in cursor_hand autocomplete_li" data-value="'+value+'">'+value+'</li>';
             }
 
             $('#input_box').autocomplete_v1({"length": 2, 'ajax': false, "in": {"customer_id": "Customer ID", "customer_fullname": "Customer Name", "ad_unit_id": "Ad Tag ID", "ad_unit_name": "Ad Tag Name", "accounting_entity_id": "AE ID", "accounting_entity_name": "AE Name", "SOURCE": "Source"}});
+//            $('#input_box').autocomplete_v1({"length": 2, 'ajax': true, 'ajax_url': 'test.php'});
         </script>
     </body>
 </html>
