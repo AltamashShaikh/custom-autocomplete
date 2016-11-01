@@ -1,4 +1,4 @@
-# custom-autocomplete
+# custom-autocomplete-Jquery-Bootstrap plugin
 
 
 The plugin can be used to autocomplete for 2 scenarios
