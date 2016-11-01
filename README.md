@@ -9,7 +9,7 @@ To initialize it
 
 	$('#input_box').autocomplete_v1({"length": 2, 'ajax': true, 'ajax_url': 'test.php'});
 
-2.To give a search hint,eg search for keyword bob in subject,body and etc
+2.To give a search hint as autocomplete,eg search for keyword bob in subject,body and etc
 
 To initialize it 
 
@@ -17,7 +17,7 @@ To initialize it
 
 The plugin can be highly customizable as on select of element from list or before and after the ajax request is made 
 
-You need to add the following method to act as a callback on select of element
+You need to add the following method to act as a callback on select of element(use this in both the cases)
 
 	function add_hidden_options(dis,form){
 	/*
