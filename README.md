@@ -21,7 +21,8 @@ You need to add the following method to act as a callback on select of element
 
 	function add_hidden_options(dis,form){
 	/*
-	do whaterver you wanna do dis variable will hold the info about the clicked or selected element and form will hold the info about the form in which the input is placed
+	do whaterver you wanna do 
+	dis variable will hold the info about the clicked or selected element and form will hold the info about the form in which the input is placed
 	*/
 
 	}
@@ -55,7 +56,8 @@ And finally add the following method to capture the selected element from the li
 
 	function add_hidden_options(dis,form){
 	/*
-	do whaterver you wanna do dis variable will hold the info about the clicked or selected element and form will hold the info about the form in which the input is placed
+	do whaterver you wanna do 
+	dis variable will hold the info about the clicked or selected element and form will hold the info about the form in which the input is placed
 	*/
 
 	}
